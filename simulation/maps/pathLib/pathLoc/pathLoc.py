@@ -130,7 +130,7 @@ def pathArr(startLoc, endLocs, emergencyLocs, dangerLocs):  # convert input from
         
                 
         
-        if False: #nazar sanji
+        if False: #nazar sanji  
             a1 = r.random()
     ##az pish taeen shode 
             if a1 <= (5.5/7) :##bale 
