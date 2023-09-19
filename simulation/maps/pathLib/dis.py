@@ -1,3 +1,5 @@
+from random import random
+
 a1 = random()
 ##az pish taeen shode 
 if a1 <= (5.5/7):##bale 

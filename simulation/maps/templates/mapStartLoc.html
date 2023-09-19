@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
         integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
         crossorigin="">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
 
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
         integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
@@ -25,15 +31,15 @@
 </head>
 
 <body data-gr-c-s-loaded="true">
-
-    <style>
+<div class="d-flex container flex-column justify-content-center vh-100 align-items-center">
+     <style>
         img.huechange {
             filter: hue-rotate(120deg);
         }
     </style>
-
-    <div id="mapid" style="width: 600px; height: 400px; position: relative;"
-        class="leaflet-container leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag" tabindex="0">
+    <div class="w-100 d-flex align-items-center justify-content-center flex-column card h-75 py-5">
+        <div id="mapid" class="d-flex position-relative w-75 justify-content-center card
+    leaflet-container leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag d-flex" tabindex="0" style="height: 400px">
         <div class="leaflet-pane leaflet-map-pane" style="transform: translate3d(0px, 0px, 0px);">
             <div class="leaflet-pane leaflet-tile-pane">
                 <div class="leaflet-layer " style="z-index: 1; opacity: 1;">
@@ -84,14 +90,24 @@
             </div>
         </div>
     </div>
-    <form method="post">
+    <form method="post" class="d-flex justify-content-center flex-column align-items-center my-5 card w-50 py-5">
         {% csrf_token %}
-        
-        <input type="text" name="lat-lng" id="lat-lng" /><!-- type = "hidden" -->
-        <input type="text" name="startCount" id="startCount" />
-        <input type="submit" value="Set" />
+
+        <div class="d-flex justify-content-center w-50 align-items-center">
+             <label for="lat-lng" class="col-4">lat and lng:</label>
+            <input type="text" name="lat-lng" id="lat-lng" class="col-8 mx-1 d-flex my-1"/><!-- type = "hidden" -->
+        </div>
+        <div class="d-flex justify-content-center w-50 align-items-center">
+            <label for="startCount" class="col-4">start counts:</label>
+            <input type="text" name="startCount" id="startCount" class="col-8 mx-1 d-flex my-1"/>
+        </div>
+
+        <input type="submit" value="Set" class="d-flex mt-4 justify-content-center" style="width: 15%"/>
     </form>
-    <script>
+    </div>
+
+</div>
+ <script>
 
         let loc = {{ myloc| safe}};
         var mymap = L.map('mapid').setView(loc, 13);
@@ -127,7 +143,6 @@
 
 
     </script>
-
 </body>
 
 </html>

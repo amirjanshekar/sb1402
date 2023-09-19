@@ -15,18 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from maps.views import start_points 
+from maps.views import start_points
 from maps.views import emergency_points
 from maps.views import dangerous_points
 from maps.views import ends_points
 from maps.views import simul
 from maps.views import traffic_path
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('maps/startPoints' , start_points),
-    path('maps/emergencyPoints' , emergency_points),
-    path('maps/dangerousPoints' , dangerous_points),
-    path('maps/endPoints' , ends_points),
-    path('maps/simulation' , simul),
-    path('maps/traffic' , traffic_path),
+    path('maps/startPoints', start_points),
+    path('maps/emergencyPoints', emergency_points),
+    path('maps/dangerousPoints', dangerous_points),
+    path('maps/endPoints', ends_points),
+    path('maps/simulation', simul),
+    path('maps/traffic', traffic_path),
 ]

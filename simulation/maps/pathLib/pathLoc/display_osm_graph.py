@@ -9,13 +9,13 @@ import sys
 
 import matplotlib.pyplot as plt
 import networkx as nx
+import OSMParser as osmp
 
 root_folder = pathlib.Path(__file__).parent / '..'
 root_folder = root_folder.resolve()
 
 sys.path.append(root_folder.as_posix())
 
-import OSMParser as osmp
 
 # Prepare paths
 data_folder = root_folder / 'data'
@@ -27,7 +27,8 @@ local_graph_file = data_folder / 'graphmap.gexf'
 output_shp_folder = data_folder / 'output_shp'
 
 # Download OSM file
-osm_map_file_content = osmp.download_osm(left=51.3407, bottom=35.7831, right=51.3680, top=35.7994, cache=False, cacheTempDir=temp_folder.as_posix())
+osm_map_file_content = osmp.download_osm(left=51.3407, bottom=35.7831, right=51.3680, top=35.7994, cache=False,
+                                         cacheTempDir=temp_folder.as_posix())
 
 # Convert OSM file to networkx graph
 graph = osmp.read_osm(osm_map_file_content)
