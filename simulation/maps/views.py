@@ -13,8 +13,8 @@ def start_points(request):
     lat_lng = []
     loc = [35.79125, 51.35435]
     locations = request.POST.get('lat-lng', False)
-    satarCount = request.POST.get('startCount', False)
-    if satarCount != 0:
+    startCounts = request.POST.get('startCount', False)
+    if startCounts != 0:
         l = locations.split(',')
         print(l)
         for i in range(0, len(l)):
@@ -33,11 +33,11 @@ def start_points(request):
         simID = sim.id
         # print(simID)
         request.session['simId'] = simID
-        request.session['startcount'] = satarCount
+        request.session['startcount'] = startCounts
     j_loc = json.dumps(loc)
 
     if request.method == 'POST':
-        return HttpResponseRedirect('endPoints')
+        return HttpResponseRedirect('emergencyPoints')
 
     return render(request, 'mapStartLoc.html', {"myloc": j_loc})
 
@@ -48,8 +48,8 @@ def emergency_points(request):  # hospitals
     lat_lng = []
     loc = [35.79125, 51.35435]
     locations = request.POST.get('lat-lng', False)
-    satarCount = request.POST.get('pointsCount', False)
-    if locations != False:
+    startCounts = request.POST.get('pointsCount', False)
+    if locations:
         l = locations.split(',')
         print(l)
         for i in range(0, len(l)):
